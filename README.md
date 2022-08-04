@@ -1,4 +1,4 @@
-# EMPTY FOR NOW :) 
+# In progress :) 
 
 # ssn-generation
 Example of program that generates and validate a defined by user number of unique PESEL codes
