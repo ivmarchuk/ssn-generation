@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.S.N. Central Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MINISTRY OF SECRET NUMBERS</h1>
+            <p>// CENTRAL TERMINAL ACCESS //</p>
+        </div>
+
+        <div class="main-content">
+            <div class="panel-left">
+                <h2>[ REQUISITION FORM C-7 ]</h2>
+                <form id="generate-form" class="terminal-form">
+                    <div class="form-group">
+                        <label for="num">> BATCH SIZE [1-10000]:</label>
+                        <input type="number" id="num" name="num" value="10" min="1" max="10000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="method">> ACQUISITION PROTOCOL:</label>
+                        <select id="method" name="method">
+                            <option value="unique" selected>COLLINS-STANDARD (UNIQUE)</option>
+                            <option value="faker">ARCHIVE SIMULATION (FAKER)</option>
+                        </select>
+                    </div>
+                    <fieldset id="unique-options">
+                        <legend>// DIRECTIVE-SPECIFIC PARAMETERS //</legend>
+                        <div class="form-group">
+                            <label for="sex">> SEX DESIGNATION [M/F]:</label>
+                            <input type="text" id="sex" name="sex" pattern="[MF]" placeholder="M">
+                        </div>
+                        <div class="form-group">
+                            <label for="start_date">> FABRICATION START (YYYY-MM-DD):</label>
+                            <input type="date" id="start_date" name="start_date" placeholder="1990-01-01">
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">> FABRICATION_END (YYYY-MM-DD):</label>
+                            <input type="date" id="end_date" name="end_date" placeholder="2000-12-31">
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn">> [ ENGAGE GENERATOR ]</button>
+                </form>
+
+                <h2 class="section-title">[ IDENTITY CREDENTIAL VALIDATION ]</h2>
+                <form id="validate-form" class="terminal-form">
+                    <div class="form-group">
+                        <label for="pesel">> PESEL STRING:</label>
+                        <input type="text" id="pesel" name="pesel" required>
+                    </div>
+                     <button type="submit" class="btn">> [ INITIATE VALIDATION ]</button>
+                </form>
+            </div>
+
+            <div class="panel-right">
+                <h2>[ OUTPUT MANIFEST ]</h2>
+                <div id="output-screen" class="output-screen">
+                    <div id="prompt">_</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>STATUS: <span class="status-ok">OPERATIONAL</span> | EYES ONLY | PROPERTY OF THE MINISTRY</p>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html> 

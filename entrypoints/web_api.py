@@ -1,4 +1,7 @@
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from ssn_generation.core.usecases.pesel_generator import generate_unique_ssn
 from ssn_generation.dataproviders.faker_ssn_provider import generate_ssn_with_faker
 from ssn_generation.core.entities.pesel import Pesel
@@ -9,6 +12,13 @@ app = FastAPI(
     description="An API to generate and validate Polish PESEL numbers.",
     version="1.0.0",
 )
+
+app.mount("/static", StaticFiles(directory="ssn_generation/entrypoints/static"), name="static")
+templates = Jinja2Templates(directory="ssn_generation/entrypoints/templates")
+
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/generate/", tags=["PESEL Generation"])
 def generate_pesels(
